@@ -2,10 +2,15 @@ from bs4 import BeautifulSoup
 import requests
 import time
 import smtplib
+import os
 from twilio.rest import Client
 
-account_sid = "AC04d09d522ca2d8be4c84dc4d1eac7afa"
-auth_token = "5a080764de31a80d27d307c0fa126100"
+# account_sid = "AC04d09d522ca2d8be4c84dc4d1eac7afa"
+# auth_token = "5a080764de31a80d27d307c0fa126100"
+
+account_sid = os.environ['account_sid']
+auth_token = os.environ['auth_token']
+password = os.environ['password']
 
 client = Client(account_sid, auth_token)
 
@@ -22,7 +27,7 @@ def alert():
     day_high_int = float(day_high[40:46].strip())
     day_low_int = float(day_low[40:46].strip())
 
-    if int(current_price_int) == int(day_high_int)-2:
+    if int(current_price_int) < int(day_high_int)-2:
         message = """\
             Subject: Buy DOGE
 
@@ -36,7 +41,7 @@ def alert():
         
         with smtplib.SMTP("smtp.gmail.com", port=587) as server:
             server.starttls()
-            server.login("arshadcryptoagency@gmail.com", "ek baar baap bol")
+            server.login("arshadcryptoagency@gmail.com", password)
             server.sendmail("arshadcryptoagency@gmail.com", "arshadaman202@gmail.com", message)
 
     elif current_price_int == int(day_low_int)+2:
@@ -48,7 +53,7 @@ def alert():
 
 while True:
     alert()
-    time.sleep(200)
+    time.sleep(10)
 
 
 
