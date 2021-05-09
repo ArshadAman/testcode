@@ -28,7 +28,7 @@ def alert():
 
     
 
-    if int(current_price_int) == int(day_high_int)-2:
+    if int(current_price_int) < int(day_high_int)-2:
         message = """\
             Subject: Buy DOGE
 
