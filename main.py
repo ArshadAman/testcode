@@ -22,13 +22,7 @@ def alert():
     day_high_int = float(day_high[40:46].strip())
     day_low_int = float(day_low[40:46].strip())
 
-    print(int(current_price_int))
-    print(int(day_high_int))
-    print(int(day_low_int))
-
-    
-
-    if int(current_price_int) < int(day_high_int)-2:
+    if int(current_price_int) == int(day_high_int)-2:
         message = """\
             Subject: Buy DOGE
 
@@ -54,7 +48,7 @@ def alert():
 
 while True:
     alert()
-    time.sleep(10)
+    time.sleep(200)
 
 
 
