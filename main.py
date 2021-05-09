@@ -5,8 +5,6 @@ import smtplib
 import os
 from twilio.rest import Client
 
-# account_sid = "AC04d09d522ca2d8be4c84dc4d1eac7afa"
-# auth_token = "5a080764de31a80d27d307c0fa126100"
 
 account_sid = os.environ['account_sid']
 auth_token = os.environ['auth_token']
@@ -27,7 +25,7 @@ def alert():
     day_high_int = float(day_high[40:46].strip())
     day_low_int = float(day_low[40:46].strip())
 
-    if int(current_price_int) < int(day_high_int)-2:
+    if int(current_price_int) == int(day_high_int)-2:
         message = """\
             Subject: Buy DOGE
 
