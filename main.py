@@ -27,9 +27,9 @@ def alert():
 
     if int(current_price_int) == int(day_high_int)-2:
         message = """\
-            Subject: Buy DOGE
+            Subject: Sell DOGE
 
-            This is the best time to buy doge. Happy Trading...."""
+            This is the best time to sell doge. Happy Trading...."""
 
         call = client.calls.create(
                         url='https://arshadaman.github.io/callmsg/sell.xml',
