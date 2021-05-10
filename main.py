@@ -41,6 +41,7 @@ def alert():
     
     while prev_val[0] != int(current_price_int):
         prev_val[0] = int(current_price_int)
+
         # Algorithm to sell the doge
         if prev_val[0] == int(day_high_int)-2:
             call = client.calls.create(
@@ -53,7 +54,7 @@ def alert():
                 server.login("arshadcryptoagency@gmail.com", password)
                 server.sendmail("arshadcryptoagency@gmail.com", "arshadaman202@gmail.com", sell_message)
 
-        if prev_val[0] == int(day_high_int):
+        elif prev_val[0] == int(day_high_int):
             call = client.calls.create(
                             url='https://arshadaman.github.io/callmsg/sell.xml',
                             to='+917978518687',
@@ -112,7 +113,7 @@ def alert():
 
 while True:
     alert()
-    time.sleep(200)
+    time.sleep(120)
     print("<<<<<<Scraping Started Again>>>>>>")
 
 
