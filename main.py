@@ -50,6 +50,17 @@ def alert():
             server.login("arshadcryptoagency@gmail.com", password)
             server.sendmail("arshadcryptoagency@gmail.com", "arshadaman202@gmail.com", sell_message)
 
+    if int(current_price_int) == int(day_high_int):
+        call = client.calls.create(
+                        url='https://arshadaman.github.io/callmsg/sell.xml',
+                        to='+917978518687',
+                        from_='+18174403957'
+                    ) 
+        with smtplib.SMTP("smtp.gmail.com", port=587) as server:
+            server.starttls()
+            server.login("arshadcryptoagency@gmail.com", password)
+            server.sendmail("arshadcryptoagency@gmail.com", "arshadaman202@gmail.com", sell_message)
+
     elif int(current_price_int) == int(day_high_int)-3:
         call = client.calls.create(
                         url='https://arshadaman.github.io/callmsg/sell.xml',
@@ -64,6 +75,17 @@ def alert():
 
     # Algorithm to buy the doge
     elif current_price_int == int(day_low_int)+2:
+        call = client.calls.create(
+                url='https://arshadaman.github.io/callmsg/buy.xml',
+                to='+917978518687',
+                from_='+18174403957'
+            )
+        with smtplib.SMTP("smtp.gmail.com", port=587) as server:
+            server.starttls()
+            server.login("arshadcryptoagency@gmail.com", password)
+            server.sendmail("arshadcryptoagency@gmail.com", "arshadaman202@gmail.com", buy_message)
+
+    elif current_price_int == int(day_low_int):
         call = client.calls.create(
                 url='https://arshadaman.github.io/callmsg/buy.xml',
                 to='+917978518687',
