@@ -22,6 +22,8 @@ sell_message = """
 
     This is the best time to sell doge. Happy Trading...."""
 
+print("......Session Started.......")
+
 def alert():
     URL = """https://coinswitch.co/coins/dogecoin/buy-dogecoin-in-india#:~:text=What%20is%20the%20current%20price,is%20trading%20at%20%E2%82%B9%2041.741694644037835."""
     r = requests.get(URL)
@@ -34,10 +36,6 @@ def alert():
     current_price_int = float(current_price[40:46].strip())
     day_high_int = float(day_high[40:46].strip())
     day_low_int = float(day_low[40:46].strip())
-
-    print(current_price_int)
-    print(day_high_int)
-    print(day_low_int)
 
 
     # Algorithm to sell the doge
